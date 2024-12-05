@@ -39,6 +39,7 @@ class AccueilController extends AbstractController
 
         $repository = $entityManager->getRepository(Produit::class);
         $afficherProduit = $repository->find($id);
+        
         return $this->render('article.html.twig', [
             "produit" => $afficherProduit
         ]);
