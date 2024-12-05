@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <h1> Modifier </h1>
+{{ form_start(formModifier) }}
+
+    {{ form_row(formModifier.nom, {'attr': {'placeholder': "Nom du produit" }}) }}
+    {{ form_row(formModifier.description, {'attr': {'placeholder': "description du produit" }}) }}
+    {{ form_row(formModifier.taille, {'attr': {'placeholder': "taille du produit" }}) }}
+    {{ form_row(formModifier.poid, {'attr': {'placeholder': "poid du produit" }}) }}
+    {{ form_row(formModifier.famille, {'attr': {'placeholder': "famille du produit" }}) }}
+   
+
+
+     {{ form_widget(formModifier) }}
+
+
+
+     <button type="submit" class="btn btn-success">Modifier produit</button>
+
+    {{ form_end(formModifier) }}
+   
+
+{% endblock %}

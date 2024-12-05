@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<h1>
+		Artile
+	</h1>
+ 
+	<div class="card" style="width: 18rem;">
+		<img src="uploads/images/{{ produit.imageFilename }}" class="card-img-top" alt="Confiture fraise bonne maman">
+		<div class="card-body">
+			<h5 class="card-title">{{ produit.nom }}</h5>
+			<p class="card-text">{{ produit.description }}</p>
+			<h6 class="card-text">{{ produit.taille }}</h6>
+			<h6 class="card-text">{{ produit.poid }}</h6>
+			<h6 class="card-text">{{ produit.famille }}</h6>
+			<a href="{{ path('app_article', {id: produit.id}) }}" class="btn btn-primary">Voir plus</a>
+		</div>
+	</div>
+{% endblock %}

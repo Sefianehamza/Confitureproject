@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	produits ajouter
+{% endblock %}
+
+
+{% block body %}
+
+{% for message in app.flashes('notice') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+	<h1>
+		Ajouter
+	</h1>
+
+	{{ form_start(formAjouter, {'attr': {'novalidate': 'novalidate'}}) }}
+	
+
+	{{ form_row(formAjouter.nom, {'attr': {'placeholder': "Nom du produit" }}) }}
+	{{ form_row(formAjouter.description, {'attr': {'placeholder': "description du produit" }}) }}
+	{{ form_row(formAjouter.taille, {'attr': {'placeholder': "Taille du produit" }}) }}
+	{{ form_row(formAjouter.poid, {'attr': {'placeholder': "poid du produit" }}) }}
+	{{ form_row(formAjouter.famille, {'attr': {'placeholder': "famille du produit" }}) }}
+	{{ form_row(formAjouter.photo, {'attr': {'placeholder': "image du produit" }}) }}
+
+
+
+
+{{ form_end(formAjouter) }}
+{% endblock %}

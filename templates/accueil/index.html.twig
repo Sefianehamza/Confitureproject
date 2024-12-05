@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	<h1>
+	produits
+	</h1>
+
+	{% for contact in contactList %}
+		<p>{{ produit.id }}
+			-
+			{{ produit.nom }}
+			-
+			{{ produit.description }}
+			-
+			{{ produit.taille }}
+			-
+			{{ produit.poid }}
+			-
+			{{ produit.famille }}
+			-
+	  </p>
+	{% endfor %}
+
+{% endblock %}
