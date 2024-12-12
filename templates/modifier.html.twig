@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1> Modifier </h1>
-{{ form_start(formModifier) }}
+	<div id="ajouter-section" class="container">
+		{{ form_start(formModifier) }}
 
-    {{ form_row(formModifier.nom, {'attr': {'placeholder': "Nom du produit" }}) }}
-    {{ form_row(formModifier.description, {'attr': {'placeholder': "description du produit" }}) }}
-    {{ form_row(formModifier.taille, {'attr': {'placeholder': "taille du produit" }}) }}
-    {{ form_row(formModifier.poid, {'attr': {'placeholder': "poid du produit" }}) }}
-    {{ form_row(formModifier.famille, {'attr': {'placeholder': "famille du produit" }}) }}
-   
+		{{ form_row(formModifier.nom, {'attr': {'placeholder': "Nom du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.description, {'attr': {'placeholder': "description du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.taille, {'attr': {'placeholder': "taille du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.poid, {'attr': {'placeholder': "poid du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.famille, {'attr': {'placeholder': "famille du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.prix, {'attr': {'placeholder': "prix du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.photo, {'attr': {'placeholder': "photo du produit" }}) }}
+		<br>
+		{{ form_row(formModifier.category ) }}
+		<br>
 
+		<button type="submit" class="btn btn-success">Modifier produit</button>
 
-     {{ form_widget(formModifier) }}
+		{{ form_end(formModifier) }}
 
-
-
-     <button type="submit" class="btn btn-success">Modifier produit</button>
-
-    {{ form_end(formModifier) }}
-   
-
+	</div>
 {% endblock %}

@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -16,23 +18,35 @@ class Produit
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
-    #[Assert\Length(min: 2,  max: 50, minMessage: "nom invalide !")]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
-    #[Assert\Length(min: 9,  max: 50, minMessage: "description invalide !")]
+   
     #[ORM\Column(length: 255)]
     private ?string $taille = null;
-
+    
     #[ORM\Column]
     private ?int $poid = null;
 
     #[ORM\Column(length: 255)]
     private ?string $famille = null;
-    #[Assert\Length(min: 9,  max: 100, minMessage: "famille invalide !")]
+
+    
 
     #[ORM\Column(length: 255)]
     private ?string $imageFilename = null;
+    #[Assert\File(
+        maxSize: '1024k',
+        extensions: ['pdf'],
+        extensionsMessage: 'Please upload a valid PDF',
+    )]
+    protected File $bioFile;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    private ?Category $category = null;
+
+    #[ORM\Column]
+    private ?int $prix = null;
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -109,4 +123,30 @@ class Produit
 
         return $this;
     }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): static
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+
 }

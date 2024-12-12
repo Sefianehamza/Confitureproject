@@ -4,24 +4,31 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+	<div id="produit-section" class="container">
 
+		{% for produit in produitList %}
+			<br>
+			<br>
+			<div class="card" style="width: 18rem;">
+				<img src="uploads/images/{{ produit.imageFilename }}" class="card-img-top" alt="Confiture bonne maman">
+				<div class="card-body">
+					<h5 class="card-title">{{ produit.nom }}</h5>
+					<h7>
+						<p class="card-text">description :
+							{{ produit.description }}</p>
+					</h7>
+					<h6 class="card-text">taille :{{ produit.taille }}</h6>
+					<h6 class="card-text">poid :{{ produit.poid }}G</h6>
+					<h6 class="card-text">{{ produit.famille }}</h6>
+					<br>
+					<br>
+					<h6 class="card-text">prix :{{ produit.prix }}€ TTC</h6>
 
-	<h1>Liste des produits</h1>
-
-	{% for produit in produitList %}
-		<div class="card" style="width: 18rem;">
-			<img src="" class="card-img-top" alt="Confiture fraise bonne maman">
-			<div class="card-body">
-				<h5 class="card-title">{{ produit.nom }}</h5>
-				<p class="card-text">{{ produit.description }}</p>
-				<h6 class="card-text">{{ produit.taille }}</h6>
-				<h6 class="card-text">{{ produit.poid }}</h6>
-				<h6 class="card-text">{{ produit.famille }}</h6>
-
-				<a href="{{ path('app_article', {id: produit.id}) }}" class="btn btn-primary">Voir plus</a>
+					<a href="{{ path('app_produit_details', {id: produit.id}) }}" class="btn btn-danger">Voir plus</a>
+				</div>
 			</div>
-		</div>
 
 
-	{% endfor %}
+		{% endfor %}
+	</div>
 {% endblock %}

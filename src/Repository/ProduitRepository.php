@@ -16,7 +16,7 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-//    /**
+    //    /**
 //     * @return Produit[] Returns an array of Produit objects
 //     */
 //    public function findByExampleField($value): array
@@ -31,7 +31,7 @@ class ProduitRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Produit
+    //    public function findOneBySomeField($value): ?Produit
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')
@@ -40,4 +40,15 @@ class ProduitRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findLastProduits(int $nbrProduit): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * FROM produit p ORDER BY p.id DESC LIMIT ' . $nbrProduit;
+
+        $resultSet = $conn->executeQuery($sql, ['nbrProduit' => $nbrProduit]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
 }

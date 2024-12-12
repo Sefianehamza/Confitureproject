@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{% endblock %}
+
 {% block body %}
-  <table class="table">
+{% for message in app.flashes('notice') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		
+<a href="{{ path('app_ajouter') }}" type="button" class="btn btn-success">Ajouter nouveau produit</a>
+	<table class="table">
 
 		<thead>
 			<tr>
@@ -10,11 +19,13 @@
 				<th scope="col">description</th>
 				<th scope="col">taille</th>
 				<th scope="col">poid</th>
-        	<th scope="col">famille</th>
+				<th scope="col">famille</th>
+				<th scope="col">prix</th>
+				<th scope="col">image</th>
 				<th scope="col">Action</th>
 			</tr>
 		</thead>
-    <tbody>
+		<tbody>
 			{% for produit in produitList %}
 				<tr>
 					<th scope="row">produit.id</th>
@@ -23,15 +34,18 @@
 					<td>{{ produit.taille }}</td>
 					<td>{{ produit.poid }}</td>
 					<td>{{ produit.famille }}</td>
+					<td>{{ produit.prix }}</td>
+					<td>{{ produit.imageFilename }}</td>
 					<th scope="col">
-          <a href="{{ path('app_catalog', {id: produit.id}) }}" type="button" class="btn btn-info">Afficher</a>
 
-						{# {% if app.user %} #}
-							<a href="{{ path('app_modifier', {id: produit.id}) }}" type="button" class="btn btn-warning">Modifier</a>
-							<a href="{{ path('app_supprimer', {id: produit.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
-              <a href="{{ path('app_ajouter', {id: produit.id}) }}" type="button" class="btn btn-success">Ajouter</a>
-						{# {% endif %} #}
-      {% endfor %}
-  
-  
-{% endblock %}
+						<a href="{{ path('app_produit_details', {id: produit.id}) }}" type="button" class="btn btn-info">Afficher</a>
+						<a href="{{ path('app_modifier', {id: produit.id}) }}" type="button" class="btn btn-warning">Modifier</a>
+						<a href="{{ path('app_supprimer', {id: produit.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+					</th>
+				{% endfor %}
+			</table>
+			</tbody>
+		
+			<a href="{{ path('app_unsubscribe', {id: app.user.id}) }}" type="button" class="btn btn-danger">Supprimer votre compte client</a>
+		{% endblock %}
+	

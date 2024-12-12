@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Produit;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,13 +22,17 @@ class ProduitType extends AbstractType
             ->add('taille')
             ->add('poid')
             ->add('famille')
+            ->add('prix')
+            ->add('category',  EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'titre'
+
+            ])
             ->add('photo', FileType::class,[
                 'required' => false,
                 'mapped' => false,
-                
             ])
             
-            ->add('save', SubmitType::class, ['label' => 'Enregistrer']);
         ;
     }
 
