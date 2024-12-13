@@ -4,41 +4,42 @@
 
 {% block body %}
 
-	<div class="container">
+	<class="container">
 		<div id="titre">
 			<div class="item">
 				<p>
 					<h1>Bienvenue dans confiture et nouvelles saveurs</h1>
 				</p>
-			</div><br>
-		</div>
-
-	<div id="produit-section" class="container">
-
-		{% for produit in produitList %}
-			<br>
-			<br>
-			<div class="card" style="width: 18rem;">
-				<img src="uploads/images/{{ produit.image_filename }}" class="card-img-top" alt="Confiture bonne maman">
-				<div class="card-body">
-					<h5 class="card-title">{{ produit.nom }}</h5>
-					<h7>
-						<p class="card-text">description :
-							{{ produit.description }}</p>
-					</h7>
-					<h6 class="card-text">taille :{{ produit.taille }}</h6>
-					<h6 class="card-text">poid :{{ produit.poid }} Gramme</h6>
-					<h6 class="card-text">{{ produit.famille }}</h6>
-					<br>
-					<br>
-					<h6 class="card-text">prix :{{ produit.prix }}€ TTC</h6>
-
-
-					<a href="{{ path('app_produit', {id: produit.id}) }}" class="btn btn-danger">Voir plus</a>
-				</div>
 			</div>
 
+		</div>
 
-		{% endfor %}
-	</div>
-{% endblock %}
+
+		<div id="produit-section" class="container">
+
+			{% for produit in produitList %}
+				<br>
+				<br>
+				<div class="card" style="width: 18rem;">
+					<img src="uploads/images/{{ produit.image_filename }}" class="card-img-top" alt="Confiture bonne maman">
+					<div class="card-body">
+						<h5 class="card-title">{{ produit.nom }}</h5>
+						<h7>
+							<p class="card-text">description :
+								{{ produit.description }}</p>
+						</h7>
+						<h6 class="card-text">taille :{{ produit.taille }}</h6>
+						<h6 class="card-text">poid :{{ produit.poid }}
+							Gramme</h6>
+						<h6 class="card-text">{{ produit.famille }}</h6>
+						<br>
+						<br>
+						<h6 class="card-text">prix :{{ produit.prix }}€ TTC</h6>
+
+
+						<a href="{{ path('app_produit', {id: produit.id}) }}" class="btn btn-danger">Voir plus</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endblock %}

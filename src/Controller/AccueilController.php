@@ -19,7 +19,7 @@ class AccueilController extends AbstractController
     public function index(ProduitRepository $produitRepository): Response
     {
         
-        $produits = $produitRepository->findLastProduits(5);
+        $produits = $produitRepository->findLastProduits(4);
         return $this->render('accueil/accueil.html.twig', [
             'produitList' => $produits,
         ]);
@@ -136,6 +136,10 @@ class AccueilController extends AbstractController
 
         $entityManager->remove($produit);
         $entityManager->flush();
+        $this->addFlash(
+            'notice',
+            'Produit modifier avec succès”!'
+        );
 
         return $this->redirectToRoute('app_catalog');
 

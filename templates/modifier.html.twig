@@ -4,7 +4,7 @@
 
 {% block body %}
 	<div id="ajouter-section" class="container">
-		{{ form_start(formModifier) }}
+		{{ form_start(formModifier, {'attr': {'novalidate': 'novalidate'}}) }}
 
 		{{ form_row(formModifier.nom, {'attr': {'placeholder': "Nom du produit" }}) }}
 		<br>

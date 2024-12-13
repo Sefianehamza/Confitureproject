@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -17,29 +16,23 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\IdenticalTo('Confiture')]
     private ?string $nom = null;
     #[ORM\Column(length: 255)]
+    
     private ?string $description = null;
-   
     #[ORM\Column(length: 255)]
     private ?string $taille = null;
-    
     #[ORM\Column]
+   
     private ?int $poid = null;
 
     #[ORM\Column(length: 255)]
     private ?string $famille = null;
-
     
 
     #[ORM\Column(length: 255)]
     private ?string $imageFilename = null;
-    #[Assert\File(
-        maxSize: '1024k',
-        extensions: ['pdf'],
-        extensionsMessage: 'Please upload a valid PDF',
-    )]
-    protected File $bioFile;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     private ?Category $category = null;
