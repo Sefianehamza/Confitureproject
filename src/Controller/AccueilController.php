@@ -138,7 +138,7 @@ class AccueilController extends AbstractController
         $entityManager->flush();
         $this->addFlash(
             'notice',
-            'Produit modifier avec succès”!'
+            'Produit supprimer avec succès”!'
         );
 
         return $this->redirectToRoute('app_catalog');
